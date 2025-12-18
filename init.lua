@@ -983,7 +983,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
@@ -1023,5 +1023,49 @@ require('lazy').setup({
   },
 })
 vim.lsp.enable 'ty'
+
+local dap = require 'dap'
+
+-- Configure LLDB
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/home/cinch/.local/share/nvim/mason/bin/codelldb', -- Adjust based on your LLDB path
+  name = 'lldb',
+}
+
+dap.configurations.cpp = {
+  {
+    name = 'Debug C++',
+    type = 'lldb',
+    request = 'launch',
+    program = '/home/cinch/Documents/code/cpp/st',
+    cwd = '/home/cinch/Documents/code/cpp/',
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
+  },
+}
+
+dap.configurations.c = dap.configurations.cpp -- Similar setup for C programs
+--
+-- spaces and tabs
+
+-- vim.opt.expandtab = true
+--
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = 'python',
+--   calback = function()
+--     vim.bo.tabstop = 4
+--     vim.bo.shiftwidth = 4
+--   end,
+-- })
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = { 'c', 'cpp', 'hpp' },
+--   calback = function()
+--     vim.bo.tabstop = 2
+--     vim.bo.shiftwidth = 2
+--   end,
+-- })
+--
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
