@@ -1038,7 +1038,9 @@ dap.configurations.cpp = {
     name = 'Debug C++',
     type = 'lldb',
     request = 'launch',
-    program = '/home/cinch/Documents/code/cpp/st',
+    program = function()
+      return vim.fn.expand '%:p:r' -- Adjust the extension to match your compiled output
+    end,
     cwd = '/home/cinch/Documents/code/cpp/',
     stopOnEntry = false,
     args = {},
