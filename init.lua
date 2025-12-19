@@ -1052,22 +1052,22 @@ dap.configurations.c = dap.configurations.cpp -- Similar setup for C programs
 --
 -- spaces and tabs
 
--- vim.opt.expandtab = true
---
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = 'python',
---   calback = function()
---     vim.bo.tabstop = 4
---     vim.bo.shiftwidth = 4
---   end,
--- })
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = { 'c', 'cpp', 'hpp' },
---   calback = function()
---     vim.bo.tabstop = 2
---     vim.bo.shiftwidth = 2
---   end,
--- })
+vim.opt.expandtab = true
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
+  callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+  end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp', 'hpp' },
+  callback = function()
+    vim.bo.tabstop = 2
+    vim.bo.shiftwidth = 2
+  end,
+})
 --
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
