@@ -1022,7 +1022,6 @@ require('lazy').setup({
     -- },
   },
 })
-vim.lsp.enable 'ty'
 
 local dap = require 'dap'
 
@@ -1041,10 +1040,12 @@ dap.configurations.cpp = {
     program = function()
       return vim.fn.expand '%:p:r' -- Adjust the extension to match your compiled output
     end,
-    cwd = '/home/cinch/Documents/code/cpp/',
+    cwd = function()
+      return vim.fn.expand '%:p:h' -- Get the directory of the current file
+    end,
     stopOnEntry = false,
     args = {},
-    runInTerminal = false,
+    runInTerminal = true,
   },
 }
 
@@ -1068,6 +1069,5 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.shiftwidth = 2
   end,
 })
---
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
