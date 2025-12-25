@@ -1069,5 +1069,24 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.shiftwidth = 2
   end,
 })
+
+-- Switch off comment continuation
+
+-- Disable comment continuation in Insert mode
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    vim.opt_local.formatoptions = vim.opt_local.formatoptions - { 'c', 'r', 'o' }
+  end,
+})
+
+-- Optionally, to also disable comment continuation in Normal mode
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, 'n', 'gcc', '', { noremap = true, silent = true })
+  end,
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
