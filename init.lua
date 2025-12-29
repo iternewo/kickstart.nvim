@@ -1084,6 +1084,47 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Keymaps for compiling cpp <leader>r (make) and <leader>R (g++)
+-- Set up compile-and-run mappings only for C++ files (FileType = "cpp").
+-- These are buffer-local mappings, so they only exist when you're editing a .cpp buffer.
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'cpp',
+  callback = function()
+    -- Compile using 'make <basename>' then run './<basename>' in an interactive terminal split.
+    vim.keymap.set('n', '<leader>r', function()
+      local basename = vim.fn.expand '%:t:r' -- filename without extension
+      if basename == '' then
+        vim.notify('No file name detected', vim.log.levels.WARN)
+        return
+      end
+
+      local make_cmd = string.format('make %s && exec ./%s', basename, basename)
+      -- open a horizontal split, set height, and run an interactive terminal with the command
+      vim.cmd 'split'
+      vim.cmd 'resize 15'
+      vim.cmd('terminal bash -lc ' .. vim.fn.shellescape(make_cmd))
+      -- switch to terminal mode so you can interact immediately
+      vim.cmd 'startinsert'
+    end, { buffer = true, desc = 'make cpp' })
+
+    -- Alternative: compile the current file directly with g++ then run it interactively.
+    vim.keymap.set('n', '<leader>R', function()
+      local fullpath = vim.fn.expand '%:p' -- full path to current file
+      local basename = vim.fn.expand '%:t:r'
+      if basename == '' or fullpath == '' then
+        vim.notify('No file detected', vim.log.levels.WARN)
+        return
+      end
+
+      -- adjust g++ flags as you prefer
+      local gpp_cmd = string.format('g++ -std=c++20 -Wall -Werror -O2 %s -o %s && exec ./%s', fullpath, basename, basename)
+      vim.cmd 'split'
+      vim.cmd 'resize 15'
+      vim.cmd('terminal bash -lc ' .. vim.fn.shellescape(gpp_cmd))
+      vim.cmd 'startinsert'
+    end, { buffer = true, desc = 'g++ compile' })
+  end,
+})
 -- Switch off comment continuation
 
 -- Disable comment continuation in Insert mode
