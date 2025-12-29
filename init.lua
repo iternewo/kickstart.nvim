@@ -193,6 +193,20 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Primeagen shortcuts
+-- Visual selection movement
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+--The Primeagen Paste
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Primeagen Paste', silent = true })
+-- centered viewport when Joining lines, Up and Down'ing, Searching, Justifying the paragraph
+vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'Join lines' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll Down' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll Up' })
+vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Go to Next Selection' })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Go to Previous Selection' })
+vim.keymap.set('n', '=ap', "ma=ap'a", { desc = 'Justify Paragraph' })
+
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
