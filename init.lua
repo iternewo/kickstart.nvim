@@ -1091,7 +1091,7 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'cpp',
   callback = function()
     -- Compile using 'make <basename>' then run './<basename>' in an interactive terminal split.
-    vim.keymap.set('n', '<leader>r', function()
+    vim.keymap.set('n', '<leader>R', function()
       local basename = vim.fn.expand '%:t:r' -- filename without extension
       if basename == '' then
         vim.notify('No file name detected', vim.log.levels.WARN)
@@ -1108,7 +1108,7 @@ vim.api.nvim_create_autocmd('FileType', {
     end, { buffer = true, desc = 'make cpp' })
 
     -- Alternative: compile the current file directly with g++ then run it interactively.
-    vim.keymap.set('n', '<leader>R', function()
+    vim.keymap.set('n', '<leader>r', function()
       local fullpath = vim.fn.expand '%:p' -- full path to current file
       local basename = vim.fn.expand '%:t:r'
       if basename == '' or fullpath == '' then
