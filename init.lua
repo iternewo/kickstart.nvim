@@ -195,8 +195,8 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 -- Primeagen shortcuts
 -- Visual selection movement
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move Selection Down' })
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move Selection Up' })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move Selection Down', silent = true })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move Selection Up', silent = true })
 --The Primeagen Paste
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Primeagen Paste', silent = true })
 -- centered viewport when Joining lines, Up and Down'ing, Searching, Justifying the paragraph
