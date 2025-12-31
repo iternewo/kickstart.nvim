@@ -127,17 +127,17 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 vim.g.clipboard = {
-  name = 'xclip',
-  copy = {
-    ['+'] = 'xclip -selection clipboard',
-    ['*'] = 'xclip -selection primary',
-  },
-  paste = {
-    ['+'] = 'xclip -selection clipboard -o',
-    ['*'] = 'xclip -selection primary -o',
-  },
-  cache_enabled = true,
-}
+--   name = 'xclip',
+--   copy = {
+--     ['+'] = 'xclip -selection clipboard',
+--     ['*'] = 'xclip -selection primary',
+--   },
+--   paste = {
+--     ['+'] = 'xclip -selection clipboard -o',
+--     ['*'] = 'xclip -selection primary -o',
+--   },
+--   cache_enabled = true,
+-- }
 
 -- Enable break indent
 vim.o.breakindent = true
