@@ -126,6 +126,18 @@ vim.o.showmode = false
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
+vim.g.clipboard = {
+  name = 'xclip',
+  copy = {
+    ['+'] = 'xclip -selection clipboard',
+    ['*'] = 'xclip -selection primary',
+  },
+  paste = {
+    ['+'] = 'xclip -selection clipboard -o',
+    ['*'] = 'xclip -selection primary -o',
+  },
+  cache_enabled = true,
+}
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -927,6 +939,7 @@ require('lazy').setup({
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    version = false,
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -941,7 +954,13 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      require('mini.surround').setup {
+        mappings = {
+          add = 'sa',
+          delete = 'sd',
+          replace = 'sr',
+        },
+      }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
