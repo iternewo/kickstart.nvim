@@ -22,9 +22,6 @@ return {
       vim.keymap.set('n', '<Leader>gd', ':Gdiffsplit<CR>', { noremap = true, silent = true, desc = '[D]iff' }) -- open diff for current file
       vim.keymap.set('n', '<Leader>gr', ':Gread<CR>', { noremap = true, silent = true, desc = 'Reset to Staged/Commit' }) -- checkout changes from index/HEAD into buffer
 
-      -- Git blame
-      vim.keymap.set('n', '<Leader>gb', ':G blame<CR>', { noremap = true, silent = true, desc = '[B]lame' }) -- open git blame for current file
-
       -- Git log / browse history
       vim.keymap.set('n', '<Leader>gl', ':G log --oneline<CR>', { noremap = true, silent = true, desc = '[L]og' }) -- show file/buffer log
 
