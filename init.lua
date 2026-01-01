@@ -876,9 +876,9 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup {
         mappings = {
-          add = 'sa',
-          delete = 'sd',
-          replace = 'sr',
+          add = '<leader>ma',
+          delete = '<leader>md',
+          replace = '<leader>mr',
         },
       }
 
@@ -927,6 +927,14 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
+  -- HACK:trying to add a new plugin
+  {
+    'rolv-apneseth/tfm.nvim',
+    config = function()
+      -- Set keymap so you can open the default terminal file manager (yazi)
+      vim.api.nvim_set_keymap('n', '<leader>e', '', { desc = 'File Manager', noremap = true, callback = require('tfm').open })
+    end,
+  },
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
