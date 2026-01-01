@@ -1,25 +1,5 @@
 --[[
 
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-========                                    .-----.          ========
-========         .----------------------.   | === |          ========
-========         |.-""""""""""""""""""-.|   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||   KICKSTART.NVIM   ||   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||                    ||   |-----|          ========
-========         ||:Tutor              ||   |:::::|          ========
-========         |'-..................-'|   |____o|          ========
-========         `"")----------------(""`   ___________      ========
-========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-========       /:::========|  |==hjkl==:::\  \ required \    ========
-========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-========                                                     ========
-=====================================================================
-=====================================================================
-
 What is Kickstart?
 
   Kickstart.nvim is *not* a distribution.
@@ -45,14 +25,6 @@ Kickstart Guide:
 
   TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
 
-    If you don't know what this means, type the following:
-      - <escape key>
-      - :
-      - Tutor
-      - <enter key>
-
-    (If you already know the Neovim basics, you can skip this step.)
-
   Once you've completed that, you can continue working through **AND READING** the rest
   of the kickstart init.lua.
 
@@ -70,18 +42,10 @@ Kickstart Guide:
     These are hints about where to find more information about the relevant settings,
     plugins or Neovim features used in Kickstart.
 
-   NOTE: Look for lines like this
-
-    Throughout the file. These are for you, the reader, to help you understand what is happening.
-    Feel free to delete them once you know what you're doing, but they should serve as a guide
-    for when you are first encountering a few different constructs in your Neovim config.
-
 If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
 
 I hope you enjoy your Neovim journey,
 - TJ
-
-P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
 -- Set <space> as the leader key
@@ -127,17 +91,17 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 vim.g.clipboard = {
---   name = 'xclip',
---   copy = {
---     ['+'] = 'xclip -selection clipboard',
---     ['*'] = 'xclip -selection primary',
---   },
---   paste = {
---     ['+'] = 'xclip -selection clipboard -o',
---     ['*'] = 'xclip -selection primary -o',
---   },
---   cache_enabled = true,
--- }
+  name = 'xclip',
+  copy = {
+    ['+'] = 'xclip -selection clipboard',
+    ['*'] = 'xclip -selection primary',
+  },
+  paste = {
+    ['+'] = 'xclip -selection clipboard -o',
+    ['*'] = 'xclip -selection primary -o',
+  },
+  cache_enabled = true,
+}
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -346,37 +310,6 @@ require('lazy').setup({
         -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
         -- default which-key.nvim defined Nerd Font icons, otherwise define a string table
         keys = {},
-        --   keys = vim.g.have_nerd_font and {} or {
-        --     Up = '<Up> ',
-        --     Down = '<Down> ',
-        --     Left = '<Left> ',
-        --     Right = '<Right> ',
-        --     C = '<C-…> ',
-        --     M = '<M-…> ',
-        --     D = '<D-…> ',
-        --     S = '<S-…> ',
-        --     CR = '<CR> ',
-        --     Esc = '<Esc> ',
-        --     ScrollWheelDown = '<ScrollWheelDown> ',
-        --     ScrollWheelUp = '<ScrollWheelUp> ',
-        --     NL = '<NL> ',
-        --     BS = '<BS> ',
-        --     Space = '<Space> ',
-        --     Tab = '<Tab> ',
-        --     F1 = '<F1>',
-        --     F2 = '<F2>',
-        --     F3 = '<F3>',
-        --     F4 = '<F4>',
-        --     F5 = '<F5>',
-        --     F6 = '<F6>',
-        --     F7 = '<F7>',
-        --     F8 = '<F8>',
-        --     F9 = '<F9>',
-        --     F10 = '<F10>',
-        --     F11 = '<F11>',
-        --     F12 = '<F12>',
-        --   },
-        -- },
       },
       -- Document existing key chains
       spec = {
@@ -418,24 +351,11 @@ require('lazy').setup({
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-      -- Telescope is a fuzzy finder that comes with a lot of different things that
-      -- it can fuzzy find! It's more than just a "file finder", it can search
-      -- many different aspects of Neovim, your workspace, LSP, and more!
-      --
-      -- The easiest way to use Telescope, is to start by doing something like:
-      --  :Telescope help_tags
-      --
-      -- After running this command, a window will open up and you're able to
-      -- type in the prompt window. You'll see a list of `help_tags` options and
-      -- a corresponding preview of the help.
-      --
+      -- FIXME:
       -- Two important keymaps to use while in Telescope are:
       --  - Insert mode: <c-/>
       --  - Normal mode: ?
       --
-      -- This opens a window that shows you all of the keymaps for the current
-      -- Telescope picker. This is really useful to discover what Telescope can
-      -- do as well as how to actually do it!
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
