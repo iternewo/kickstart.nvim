@@ -316,7 +316,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>m', group = '[m]ini.surround' },
+        { '<leader>g', group = '[G]it Fugitive' },
       },
     },
   },
@@ -860,7 +860,6 @@ require('lazy').setup({
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
-    version = false,
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -876,11 +875,11 @@ require('lazy').setup({
       -- - <leader>md'   - [S]urround [D]elete [']quotes
       -- - <leader>mr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup {
-        mappings = {
-          add = '<leader>ma',
-          delete = '<leader>md',
-          replace = '<leader>mr',
-        },
+        -- mappings = {
+        --   add = '<leader>ma',
+        --   delete = '<leader>md',
+        --   replace = '<leader>mr',
+        -- },
       }
 
       -- Simple and easy statusline.
@@ -956,7 +955,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -1065,7 +1064,7 @@ vim.api.nvim_create_autocmd('FileType', {
       end
 
       -- adjust g++ flags as you prefer
-      local gpp_cmd = string.format('g++ -std=c++20 -Wall -Werror -O2 %s -o %s && exec ./%s', fullpath, basename, basename)
+      local gpp_cmd = string.format('g++ -std=c++20 -fsanitize=address,undefined -Wall -Werror -O2 %s -o %s && exec ./%s', fullpath, basename, basename)
       vim.cmd 'split'
       vim.cmd 'resize 15'
       vim.cmd('terminal bash -lc ' .. vim.fn.shellescape(gpp_cmd))

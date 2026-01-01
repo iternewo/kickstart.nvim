@@ -12,7 +12,7 @@ return {
   lazy = false,
   keys = {
     { 'E', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-    { '<leader>g', ':Neotree git_status<CR>', desc = 'Neotree Git Status', silent = true },
+    { '<leader>e', ':Neotree git_status<CR>', desc = 'Neotree Git Status', silent = true },
   },
   opts = {
     enable_git_status = true,
