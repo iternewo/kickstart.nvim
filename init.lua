@@ -316,6 +316,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>m', group = '[m]ini.surround' },
       },
     },
   },
@@ -932,7 +933,7 @@ require('lazy').setup({
     'rolv-apneseth/tfm.nvim',
     config = function()
       -- Set keymap so you can open the default terminal file manager (yazi)
-      vim.api.nvim_set_keymap('n', '<leader>e', '', { desc = 'File Manager', noremap = true, callback = require('tfm').open })
+      vim.api.nvim_set_keymap('n', '<leader>e', '', { desc = 'Yazi', noremap = true, callback = require('tfm').open })
     end,
   },
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
