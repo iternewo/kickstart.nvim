@@ -726,7 +726,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'black' },
+        -- python = { 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -872,9 +872,9 @@ require('lazy').setup({
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
+      -- - <leader>maiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+      -- - <leader>md'   - [S]urround [D]elete [']quotes
+      -- - <leader>mr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup {
         mappings = {
           add = '<leader>ma',
@@ -929,13 +929,13 @@ require('lazy').setup({
   },
 
   -- HACK:trying to add a new plugin
-  {
-    'rolv-apneseth/tfm.nvim',
-    config = function()
-      -- Set keymap so you can open the default terminal file manager (yazi)
-      vim.api.nvim_set_keymap('n', '<leader>e', '', { desc = 'Yazi', noremap = true, callback = require('tfm').open })
-    end,
-  },
+  -- {
+  --   'rolv-apneseth/tfm.nvim',
+  --   config = function()
+  --     -- Set keymap so you can open the default terminal file manager (yazi)
+  --     vim.api.nvim_set_keymap('n', '<leader>e', '', { desc = 'Yazi', noremap = true, callback = require('tfm').open })
+  --   end,
+  -- },
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
