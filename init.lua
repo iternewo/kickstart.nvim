@@ -867,20 +867,21 @@ require('lazy').setup({
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
+      -- NOTE:commenting this out to reclaim va), va{ etc.
+      -- require('mini.ai').setup { n_lines = 500 }
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - <leader>maiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - <leader>md'   - [S]urround [D]elete [']quotes
       -- - <leader>mr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup {
-        -- mappings = {
-        --   add = '<leader>ma',
-        --   delete = '<leader>md',
-        --   replace = '<leader>mr',
-        -- },
-      }
+      -- require('mini.surround').setup {
+      -- mappings = {
+      --   add = '<leader>ma',
+      --   delete = '<leader>md',
+      --   replace = '<leader>mr',
+      -- },
+      -- }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
