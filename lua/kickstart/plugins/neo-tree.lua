@@ -11,23 +11,24 @@ return {
   },
   lazy = false,
   keys = {
-    { 'E', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-    { '<leader>e', ':Neotree git_status<CR>', desc = 'Neotree Git Status', silent = true },
+    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    -- { '<leader>e', ':Neotree git_status<CR>', desc = 'Neotree Git Status', silent = true },
   },
   opts = {
-    enable_git_status = true,
+    -- disable git status for now
+    enable_git_status = false,
     git_status = {
       window = {
         position = 'float',
-        mappings = {
-          ['A'] = 'git add all',
-          ['gu'] = 'git unstage file',
-          ['ga'] = 'git add file',
-          ['gr'] = 'git revert file',
-          ['gc'] = 'git commit',
-          ['gp'] = 'git push',
-          ['gg'] = 'git commit and push',
-        },
+        -- mappings = {
+        --   ['A'] = 'git add all',
+        --   ['gu'] = 'git unstage file',
+        --   ['ga'] = 'git add file',
+        --   ['gr'] = 'git revert file',
+        --   ['gc'] = 'git commit',
+        --   ['gp'] = 'git push',
+        --   ['gg'] = 'git commit and push',
+        -- },
       },
     },
     close_if_last_window = true,
