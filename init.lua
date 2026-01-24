@@ -169,12 +169,22 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- My shortcuts
+
+-- next and prev buffers aka homemade harpoon
+-- Buffer navigation in Normal mode using Lua API
+vim.keymap.set('n', '<leader>p', ':bprevious<CR>', { desc = 'Previous buffer', silent = true })
+vim.keymap.set('n', '<leader>n', ':bnext<CR>', { desc = 'Next buffer', silent = true })
+
 -- Primeagen shortcuts
+
 -- Visual selection movement
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move Selection Down', silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move Selection Up', silent = true })
+
 --The Primeagen Paste
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Primeagen Paste', silent = true })
+
 -- centered viewport when Joining lines, Up and Down'ing, Searching, Justifying the paragraph
 vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'Join lines' })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll Down' })
