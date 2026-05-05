@@ -108,6 +108,10 @@ vim.o.breakindent = true
 
 -- Save undo history
 vim.o.undofile = true
+vim.o.swapfile = false
+
+-- CMDLINE HEiGHT to 2 to avoid hit-enter when compiling love2D
+vim.o.cmdheight = 2
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
@@ -170,6 +174,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- My shortcuts
+
+-- :W also saves; :Wq also quits
+vim.api.nvim_create_user_command('W', 'write', {})
+vim.api.nvim_create_user_command('Wq', 'wq', {})
+vim.api.nvim_create_user_command('WQ', 'wq', {})
+vim.api.nvim_create_user_command('Q', 'quit', {})
 
 -- next and prev buffers aka homemade harpoon
 -- Buffer navigation in Normal mode using Lua API
