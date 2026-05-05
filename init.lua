@@ -111,7 +111,7 @@ vim.o.undofile = true
 vim.o.swapfile = false
 
 -- CMDLINE HEiGHT to 2 to avoid hit-enter when compiling love2D
-vim.o.cmdheight = 2
+-- vim.o.cmdheight = 2
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
@@ -180,6 +180,9 @@ vim.api.nvim_create_user_command('W', 'write', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('WQ', 'wq', {})
 vim.api.nvim_create_user_command('Q', 'quit', {})
+
+-- love2D in integrated terminal
+vim.keymap.set('n', '<leader>ll', ':!love .<CR>', { desc = '[L]ove2D', silent = true })
 
 -- next and prev buffers aka homemade harpoon
 -- Buffer navigation in Normal mode using Lua API
