@@ -182,7 +182,8 @@ vim.api.nvim_create_user_command('WQ', 'wq', {})
 vim.api.nvim_create_user_command('Q', 'quit', {})
 
 -- love2D in integrated terminal
-vim.keymap.set('n', '<leader>ll', ':!love .<CR>', { desc = '[L]ove2D', silent = true })
+-- vim.keymap.set('n', '<leader>ll', ':!love .<CR>', { desc = '[L]ove2D', silent = true })
+vim.keymap.set('n', '<leader>ll', ":let g:job = jobstart(['love', '.'], {'detach': v:true})<CR>", { desc = '[L]ove2D', silent = true })
 
 -- next and prev buffers aka homemade harpoon
 -- Buffer navigation in Normal mode using Lua API
