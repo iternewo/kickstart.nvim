@@ -108,10 +108,6 @@ vim.o.breakindent = true
 
 -- Save undo history
 vim.o.undofile = true
-vim.o.swapfile = false
-
--- CMDLINE HEiGHT to 2 to avoid hit-enter when compiling love2D
--- vim.o.cmdheight = 2
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
@@ -175,15 +171,15 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 -- My shortcuts
 
--- :W also saves; :Wq also quits
+-- The courtesy of Teej
+vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'Execute the current line' })
+vim.keymap.set('n', '<leader>X', ':w<CR><cmd>source %<CR>', { desc = 'Execute the current file' })
+
+-- :W also saves; :Wq, Q also quit
 vim.api.nvim_create_user_command('W', 'write', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('WQ', 'wq', {})
 vim.api.nvim_create_user_command('Q', 'quit', {})
-
--- love2D in integrated terminal
--- vim.keymap.set('n', '<leader>ll', ':!love .<CR>', { desc = '[L]ove2D', silent = true })
-vim.keymap.set('n', '<leader>ll', ":let g:job = jobstart(['love', '.'], {'detach': v:true})<CR>", { desc = '[L]ove2D', silent = true })
 
 -- next and prev buffers aka homemade harpoon
 -- Buffer navigation in Normal mode using Lua API
@@ -834,7 +830,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
 
       sources = {
@@ -888,28 +884,6 @@ require('lazy').setup({
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
-      -- Better Around/Inside textobjects
-      --
-      -- Examples:
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
-      -- NOTE:commenting this out to reclaim va), va{ etc.
-      -- require('mini.ai').setup { n_lines = 500 }
-
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
-      -- - <leader>maiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - <leader>md'   - [S]urround [D]elete [']quotes
-      -- - <leader>mr)'  - [S]urround [R]eplace [)] [']
-      -- require('mini.surround').setup {
-      -- mappings = {
-      --   add = '<leader>ma',
-      --   delete = '<leader>md',
-      --   replace = '<leader>mr',
-      -- },
-      -- }
-
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
