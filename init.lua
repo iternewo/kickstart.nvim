@@ -53,7 +53,6 @@ I hope you enjoy your Neovim journey,
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -837,7 +836,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = true, auto_show_delay_ms = 500 },
+        documentation = { auto_show = false, auto_show_delay_ms = 500 },
       },
 
       sources = {
