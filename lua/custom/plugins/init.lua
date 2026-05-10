@@ -100,4 +100,5 @@ return {
       anti_conceal = { enabled = false },
     },
   },
+  { 'mbbill/undotree' },
 }
