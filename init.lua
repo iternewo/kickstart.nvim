@@ -182,7 +182,7 @@ end, { expr = true, silent = true, desc = 'Up (wrap-aware)' })
 
 -- The courtesy of Teej
 vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'Execute the current line' })
-vim.keymap.set('v', '<leader>x', '<cmd>.lua<CR>', { desc = 'Execute the selected lines' })
+vim.keymap.set('v', '<leader>x', '<cmd>lua<CR>', { desc = 'Execute the selected lines' })
 vim.keymap.set('n', '<leader>X', ':w<CR><cmd>source %<CR>', { desc = 'Execute the current file' })
 
 -- :W also saves; :Wq, Q also quit
@@ -463,7 +463,7 @@ require('lazy').setup({
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-        { path = '${3rd}/love2d/library', words = { '_G.love' } },
+        { path = '${3rd}/love2d/library', words = { '_G.love', 'love.' } },
       },
     },
   },
